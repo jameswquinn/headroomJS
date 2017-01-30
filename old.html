@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+    <title>Hide your header on scroll - Headroom.js</title>
+
+    
+
+
+<style>
+        body {
+            height: 3000px;
+            font-family: sans-serif;
+        }
+        .boxie {
+            width: 100%;
+            height: 70px;
+            background-color: black;
+        }
+        .header--fixed {
+            position: fixed;
+            z-index: 10;
+            right: 0;
+            left: 0;
+            top: 0
+        }
+        .headroom {
+            transition: transform .25s ease-in-out;
+            will-change: transform
+        }
+        .headroom--pinned {
+            transform: translateY(0)
+        }
+        .headroom--unpinned {
+            transform: translateY(-100%)
+        }
+            /**
+         * Layout
+         */
+        .nav__list {
+            margin: 0;
+            padding: 0;
+        }
+        .nav__list a {
+            padding: .75em 1.5em;
+            transition: all .25s ease-in-out;
+        }
+        .nav__list__item,
+        .nav__list__item a {
+            display: block;
+        }
+
+        /**
+         * Desktop-view
+         */
+
+        @media screen and (min-width: 1024px) {
+            .nav__list > .nav__list__item,
+            .nav__list > .nav__list__item a {
+                display: inline-block;
+            }
+        }
+
+        /**
+         * Presentation
+         */
+        .nav {
+            background-color: transparent;
+        }
+        .nav a {
+            color: #555;
+            text-decoration: none;
+        }
+        .nav a:hover, .nav a:active, .nav a:focus {
+            background-color: #e5e5e5;
+        }
+</style>
+</head>
+<body>
+
+
+<header id="header" class="header header--fixed" role="banner">
+    <!--
+    <div class="boxie" >
+    </div>
+-->
+    <nav class="nav">
+    <ul class="nav__list">
+        <li class="nav__list__item"><a href="">Lorem</a></li><!--
+        --><li class="nav__list__item"><a href="">Nobis</a></li><!--
+        --><li class="nav__list__item"><a href="">Nostrum</a></li><!--
+        --><li class="nav__list__item"><a href="">Quia</a></li><!--
+        --><li class="nav__list__item"><a href="">Non</a></li><!--
+        --><li class="nav__list__item"><a href="">Voluptate</a></li><!--
+        --><li class="nav__list__item"><a href="">Magni</a></li>
+    </ul>
+</nav>
+</header>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/headroom.min.js"></script>
+<script>
+(function() {
+    var header = document.querySelector("#header");
+
+    if(window.location.hash) {
+      header.classList.add("headroom--unpinned");
+    }
+
+    var headroom = new Headroom(header, {
+        tolerance: {
+          down : 10,
+          up : 20
+        },
+        offset : 205
+    });
+    headroom.init();
+
+}());
+</script>
+
+</body>
+</html>
+
+<!-- Localized -->
