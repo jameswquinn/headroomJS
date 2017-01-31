@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+      <title>Hide your header on scroll - Headroom.js</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/normalize/5.0.0/normalize.css">
+      <style>
+         .header--fixed {
+         position: fixed;
+         z-index: 10;
+         right: 0;
+         left: 0;
+         top: 0
+         }
+         .headroom {
+         transition: transform .25s ease-in-out;
+         will-change: transform
+         }
+         .headroom--pinned {
+         transform: translateY(0)
+         }
+         .headroom--unpinned {
+         transform: translateY(-100%)
+         }
+         html,
+         body {
+         font-family: sans-serif;
+         background-color: black;
+         height: 3000px
+         }
+         .hero {
+         width: 100%;
+         height: 100vh;
+         background-image: url(http://ayibamagazine.com/wp-content/uploads/2016/06/7033030-keyboard-hi-tech.jpg);
+         background-size: cover;
+         background-repeat: no-repeat;
+         }
+         @media screen and (min-width: 1040px) {
+         .masthead_nav .list_menu__item {
+         display: inline-block;
+         float: left;
+         }
+         .brand__item a,
+         .masthead_nav .list_menu__item a {
+         text-decoration: none;
+         padding: 1rem 0 0.2rem 0;
+         margin: 0 1rem;
+         color: white;
+         }
+         .masthead_nav .list_menu {
+         list-style: none;
+         float: right;
+         }
+         .masthead_nav .list_menu:hover .list_menu__item {
+         opacity: 0.5;
+         }
+         .masthead_nav .list_menu .list_menu__item:hover {
+         opacity: 1;
+         }
+         .masthead_nav .list_menu__item > a {
+         position: relative;
+         text-decoration: none;
+         }
+         .masthead_nav .list_menu__item > a:hover {
+         color: #fff;
+         }
+         .masthead_nav .list_menu__item > a:before {
+         content: "";
+         position: absolute;
+         width: 100%;
+         height: 2px;
+         bottom: 0;
+         left: 0;
+         background-color: #fff;
+         visibility: hidden;
+         -webkit-transform: scaleX(0);
+         transform: scaleX(0);
+         -webkit-transition: all 0.3s ease-in-out 0s;
+         transition: all 0.3s ease-in-out 0s;
+         }
+         .masthead_nav .list_menu__item > a:hover:before {
+         visibility: visible;
+         -webkit-transform: scaleX(1);
+         transform: scaleX(1);
+         }
+         .container {
+         max-width: 960px;
+         margin-left: auto;
+         margin-right: auto;
+         }
+         .brand__item {
+         float: left;
+         }
+         .masthead_nav .list_menu__item,
+         .masthead_nav .list_menu__item:hover,
+         .masthead_nav .list_menu__item:active,
+         .masthead_nav .list_menu__item:focus {
+         transition: all 300ms
+         }
+         }
+         @media screen and (max-width: 1039px) {
+         .brand__item {}
+         }
+         p {
+         color: white;
+         }
+      </style>
+   </head>
+   <body>
+      <p style="display:none;">innovate | design | deliver</p>
+      <header id="header" class="header header--fixed" role="banner">
+         <div class="container">
+            <span class="brand__item"><a href=""><img height="55px" src="squarespace-logo-horizontal-white.svg"></a></span>
+            <nav class="masthead_nav" role=”navigation” >
+               <ul class="list_menu">
+                  <li class="list_menu__item"><a href="">Mac</a></li>
+                  <li class="list_menu__item"><a href="">IPad</a></li>
+                  <li class="list_menu__item"><a href="">IPhone</a></li>
+                  <li class="list_menu__item"><a href="">Watch</a></li>
+                  <li class="list_menu__item"><a href="">Music</a></li>
+               </ul>
+            </nav>
+         </div>
+      </header>
+      <header role="banner">
+         <div class="hero"></div>
+      </header>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/headroom.min.js"></script>
+      <script>
+         (function() {
+             var header = document.querySelector("#header");
+         
+             if(window.location.hash) {
+               header.classList.add("headroom--unpinned");
+             }
+         
+             var headroom = new Headroom(header, {
+                 tolerance: {
+                   down : 10,
+                   up : 20
+                 },
+                 offset : 205
+             });
+             headroom.init();
+         
+         }());
+      </script>
+   </body>
+</html>
+<!-- Localized -->
