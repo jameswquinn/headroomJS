@@ -1,0 +1,113 @@
+ .header--fixed {
+      position: fixed;
+      right: 0;
+      left: 0;
+      top: 0;
+     outline: 0;
+     height: 3rem;
+     z-index: 10;
+  }
+  .headroom {
+      transition: all 0.3s ease-in-out 0s;
+      will-change: transform
+  }
+  .headroom--pinned {
+      transform: translateY(0)
+  }
+  .headroom--unpinned {
+      transform: translateY(-100%)
+  }
+
+
+  /*
+          * Desktop layout
+          */
+  
+  @media screen and (min-width: 1040px) {
+      .masthead_nav .list_menu__item {
+          display: inline-block;
+          float: left;
+      }
+      .brand__item a,
+      .masthead_nav .list_menu__item a {
+          padding: 1rem 0 0.2rem 0;
+          margin: 0 1rem;
+      }
+      .masthead_nav .list_menu {
+          list-style: none;
+          float: right;
+      }
+      .masthead_nav .list_menu__item > a {
+          position: relative;
+          text-decoration: none;
+      }
+      .masthead_nav .list_menu__item > a:hover {
+          color: #fff;
+      }
+      .masthead_nav .list_menu__item > a:before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: #fff;
+          visibility: hidden;
+          -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+          -webkit-transition: all 0.3s ease-in-out 0s;
+          transition: all 0.3s ease-in-out 0s;
+      }
+      .masthead_nav .list_menu__item > a:hover:before {
+          visibility: visible;
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+      }
+      .container {
+          max-width: 1166px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      .brand__item {
+          float: left;
+      }
+  }
+  /*
+          * layout
+          */
+  
+  .masthead_nav .list_menu:hover .list_menu__item {
+      opacity: 0.5;
+  }
+  .masthead_nav .list_menu .list_menu__item:hover {
+      opacity: 1;
+  }
+  .masthead_nav .list_menu__item,
+  .masthead_nav .list_menu__item:hover,
+  .masthead_nav .list_menu__item:active,
+  .masthead_nav .list_menu__item:focus {
+     transition: all 0.3s ease-in-out 0s;
+      outline: none;
+  }
+  .masthead_nav .list_menu__item a {
+      text-decoration: none;
+      color: white;
+  }   
+ .header {
+     outline: 0;
+    border: none;
+    transition: all 0.3s ease-in-out 0s;
+  }
+ .header.on-scroll {
+    background-color: white;
+  }
+ .header.on-scroll .masthead_nav .list_menu__item > a {
+          color: #000;
+      }
+.header.on-scroll   .masthead_nav .list_menu__item > a:hover {
+          color: #000;
+      }
+.header.on-scroll  .masthead_nav .list_menu__item > a:before {
+          background-color: #000;
+      }
+

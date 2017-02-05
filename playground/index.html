@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+      <title>Hide your header on scroll - Headroom.js</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/normalize/5.0.0/normalize.css">
+      <style>
+        /* housekeeping */
+  
+  html,
+  body {
+      font-family: sans-serif;
+      background-color: black;
+      height: 3000px
+  }
+  .hero {
+      width: 100%;
+      height: 100vh;
+      background-image: url(http://ayibamagazine.com/wp-content/uploads/2016/06/7033030-keyboard-hi-tech.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+  }
+  /* endof housekeeping */
+  /* hide menu on scroll down */
+  
+  .header--fixed {
+      position: fixed;
+      z-index: 10;
+      right: 0;
+      left: 0;
+      top: 0;
+      height: auto;
+  }
+  .headroom {
+      transition: transform .25s ease-in-out;
+      will-change: transform
+  }
+  .headroom--pinned {
+      transform: translateY(0)
+  }
+  .headroom--unpinned {
+      transform: translateY(-100%)
+  }
+  /* endof hide menu on scroll down */
+  
+  @media screen and (min-width: 1040px) {
+      .nav .list_item {
+          display: inline-block;
+          float: left;
+      }
+      .nav .list_item a {
+          text-decoration: none;
+          padding: 1rem 0 0.5rem 0;
+          margin: 0 1rem;
+      }
+      .nav .list_menu {
+          float: right;
+      }
+      .container {
+          max-width: 960px;
+          margin-left: auto;
+          margin-right: auto;
+      }
+  }
+  @media screen and (max-width: 1039px) {
+      .nav {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 100vh;
+          background-color: rgba(0, 0, 0, 0.4);
+          display: block;
+      }
+      .nav .list_menu {
+          position: relative;
+          top: 5rem;
+      }
+      .nav .list_item a {
+          font-size: 200%;
+          line-height: 2.5rem;
+      }
+  }
+  /* presentation, global settings */
+  
+  .nav .list_menu {
+      list-style: none;
+  }
+  .logo {
+      float: left;
+      padding-left: 1rem;
+      position: absolute;
+      top: .5rem;
+  }
+  .logo a {
+      display: block;
+      width: 16em;
+      height: 40px;
+  }
+  /* dimming all links not on hover */
+  
+  .nav .list_menu:hover .list_item {
+      opacity: 0.5;
+  }
+  .nav .list_menu .list_item:hover {
+      opacity: 1;
+  }
+  /* endof dimming all links not on hover */
+  /* setting a tag global value */
+  
+  .nav .list_item a {
+      text-decoration: none;
+      color: white;
+  }
+  /* end of setting a tag global value 
+          /* animated underscore on hover */
+  
+  .nav .list_item > a {
+      position: relative;
+      text-decoration: none;
+  }
+  .nav .list_item > a:hover {
+      color: #fff;
+  }
+  .nav .list_item > a:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #fff;
+      visibility: hidden;
+      -webkit-transform: scaleX(0);
+      transform: scaleX(0);
+      -webkit-transition: all 0.3s ease-in-out 0s;
+      transition: all 0.3s ease-in-out 0s;
+  }
+  .nav .list_item > a:hover:before {
+      visibility: visible;
+      -webkit-transform: scaleX(1);
+      transform: scaleX(1);
+  }
+  .nav .list_item,
+  .nav .list_item:hover,
+  .nav .list_item:active,
+  .nav .list_item:focus {
+      transition: all 300ms
+  }
+  /* endof animated underscore on hover */
+  /* endof presentation */
+      </style>
+   </head>
+   <body>
+      <p style="display:none;">innovate | design | deliver</p>
+      <header id="header" class="header header--fixed" role="banner">
+         <div class="container">
+            <div class="logo"><a href=""><img src="http://p6.zdassets.com/hc/theme_assets/593095/200068269/logo_white.png" alt=""></a></div>
+            <nav class="nav">
+               <ul class="list_menu">
+                  <li class="list_item"><a href="">Mac</a></li>
+                  <li class="list_item"><a href="">IPad</a></li>
+                  <li class="list_item"><a href="">IPhone</a></li>
+                  <li class="list_item"><a href="">Watch</a></li>
+                  <li class="list_item"><a href="">Music</a></li>
+               </ul>
+            </nav>
+         </div>
+      </header>
+      <div class="hero"></div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.3/headroom.min.js"></script>
+      <script>
+         (function() {
+             var header = document.querySelector("#header");
+         
+             if(window.location.hash) {
+               header.classList.add("headroom--unpinned");
+             }
+         
+             var headroom = new Headroom(header, {
+                 tolerance: {
+                   down : 10,
+                   up : 20
+                 },
+                 offset : 205
+             });
+             headroom.init();
+         
+         }());
+      </script>
+   </body>
+</html>
+<!-- Localized -->

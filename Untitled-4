@@ -1,0 +1,57 @@
+window.onscroll = function changeClass(){
+}
+
+
+
+
+var scrollPosY = window.pageYOffset | document.body.scrollTop;
+
+
+
+if(scrollPosY > 100) {
+          navBar.className = ('basic-classname added-classname');
+    } else if(scrollPosY <= 100) {
+         navBar.className =  ('basic-classname');
+    }
+
+
+
+
+
+var navBar = document.getElementById('navBar'); 
+// selects the element by Id
+var secondSection = document.getElementById('secondSection');  
+// selects the element by Id. 
+var secondSectionTop = aboutSection.getBoundingClientRect().top; 
+//selects the Y position of the element in the view
+var navBarHeight = navBar.getBoundingClientRect().height; 
+//select the height of the navBar
+
+
+
+
+
+if(secondSectionTop <= navBarHeight) {
+          navBar.className = ('basic-classname added-classname');
+    } else if(aboutSectionTop >= navBarHeight) {
+         navBar.className =  ('basic-classname');
+   }
+   
+   
+   
+   
+   
+   
+   
+   window.onscroll = function changeNav(){
+    var navBar = document.getElementById('navBar'),
+          secondSection = document.getElementById('secondSection'),
+          secondSectionTop = aboutSection.getBoundingClientRect().top, 
+          navBarHeight = navBar.getBoundingClientRect().height;
+
+    if(secondSectionTop <= navBarHeight) {
+          navBar.className = ('basic-classname');
+    } else if(aboutSectionTop >= navBarHeight) {
+         navBar.className =  ('basic-classname added-classname');
+    }
+}
